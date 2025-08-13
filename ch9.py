@@ -810,6 +810,8 @@ if not sales_hourly_data.empty and sales_hourly_data['Count'].sum() > 0:
         yaxis_tickfont_size=16,
     )
     st.plotly_chart(heatmap_fig_sales, use_container_width=True)
+    st.markdown("<h6>Sales Calls Hourly Data:</h6>", unsafe_allow_html=True)
+    st.dataframe(sales_hourly_data[['Hour_Label', 'Count', 'Percentage']].rename(columns={'Hour_Label': 'Hour', 'Count': 'Calls', 'Percentage': 'Percentage (%)'}))
 else:
     display_placeholder(f"No sales calls data to display hourly heatmap on {sales_day_type}.", height_px=150)
 
@@ -1047,6 +1049,8 @@ if not service_hourly_data.empty and service_hourly_data['Count'].sum() > 0:
         yaxis_tickfont_size=16,
     )
     st.plotly_chart(heatmap_fig_service, use_container_width=True)
+    st.markdown("<h6>Service Calls Hourly Data:</h6>", unsafe_allow_html=True)
+    st.dataframe(service_hourly_data[['Hour_Label', 'Count', 'Percentage']].rename(columns={'Hour_Label': 'Hour', 'Count': 'Calls', 'Percentage': 'Percentage (%)'}))
 else:
     display_placeholder(f"No service calls data to display hourly heatmap on {service_day_type}.", height_px=150)
 
@@ -1129,6 +1133,8 @@ if not overall_hourly_data.empty and overall_hourly_data['Count'].sum() > 0:
         yaxis_tickfont_size=16,
     )
     st.plotly_chart(heatmap_fig_total, use_container_width=True)
+    st.markdown("<h6>Overall Calls Hourly Data:</h6>", unsafe_allow_html=True)
+    st.dataframe(overall_hourly_data[['Hour_Label', 'Count', 'Percentage']].rename(columns={'Hour_Label': 'Hour', 'Count': 'Calls', 'Percentage': 'Percentage (%)'}))
 else:
     display_placeholder(f"No valid 'Time' or hour information found for overall calls on {overall_day_type}.", height_px=150)
 
